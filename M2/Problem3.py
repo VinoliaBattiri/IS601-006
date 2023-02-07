@@ -15,6 +15,7 @@ def process_array(num, arr):
         else :
             arr[i] = abs(arr[i])
     print(arr)
+    
 print("Problem 3")
 process_array(1, a1)
 process_array(2, a2)
