@@ -9,8 +9,12 @@ def process_array(num, arr):
     print(arr)
     print("\nPositive Output:\n")
     # TODO add new code here to print the desired result
-
-
+    for i in range(0,len(arr)):
+        if(isinstance(arr[i],str)):
+            arr[i] = str(abs(int(arr[i])))
+        else :
+            arr[i] = abs(arr[i])
+    print(arr)
 print("Problem 3")
 process_array(1, a1)
 process_array(2, a2)
