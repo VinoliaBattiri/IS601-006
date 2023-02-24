@@ -79,27 +79,32 @@ def add_task(name: str, description: str, due: str):
 
 def process_update(index):
     """ extracted the user input prompts to get task data then passes it to update_task() """
-    if index < len(tasks) and index >= 1:
     # get the task by index
-    # consider index out of bounds scenarios and include appropriate message(s) for invalid index
+    if index < len(tasks) and index >= 1:
     # show the existing value of each property where the TODOs are marked in the text of the inputs (replace the TODO related text)
-    # include your ucid and date as a comment of when you implemented this, briefly summarize the solution
+        name = input(f"What's the name of this task? {tasks[index]['name']} \n").strip()
+        desc = input(f"What's a brief descriptions of this task? {tasks[index]['description']} \n").strip()
+        due = input(f"When is this task due (format: m/d/y H:M:S) {tasks[index]['due']} \n").strip()
     
-    name = input(f"What's the name of this task? (TODO name) \n").strip()
-    desc = input(f"What's a brief descriptions of this task? (TODO description) \n").strip()
-    due = input(f"When is this task due (format: m/d/y H:M:S) (TODO due) \n").strip()
+    # consider index out of bounds scenarios and include appropriate message(s) for invalid index
+    else:
+        print("Task does not exist. Please input correct index of the task") 
+    # include your ucid and date as a comment of when you implemented this, briefly summarize the solution
+    # my ucid: vb437 and Date: 23/02/23
     update_task(index, name=name, description=desc, due=due)
+
 
 def update_task(index: int, name: str, description:str, due: str):
     """ Updates the name, description , due date of a task found by index if an update to the property was provided """
     # find the task by index
+    tasktobe_updated = tasks[index]
     # consider index out of bounds scenarios and include appropriate message(s) for invalid index
     # update incoming task data if it's provided (if it's not provided use the original task property value)
     # update lastActivity with the current datetime value
     # output that the task was updated if any items were changed, otherwise mention task was not updated
     # make sure save() is still called last in this function
     # include your ucid and date as a comment of when you implemented this, briefly summarize the solution
-    
+    # my ucid: vb437 and Date: 24/02/23
     save()
 
 def mark_done(index):
