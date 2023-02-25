@@ -159,10 +159,15 @@ def mark_done(index):
 def view_task(index):
     """ View more info about a specific task fetch by index """
     # find task from list by index
+    try: 
+        task = tasks[index] #assigned the enetered list of task in a variable named task 
     # consider index out of bounds scenarios and include appropriate message(s) for invalid index
+    except:
+        print("The index that you entered doesnot exist") #if index is out of bound prints this statement
+        return
     # utilize the given print statement when a task is found
     # include your ucid and date as a comment of when you implemented this, briefly summarize the solution
-    task = {}
+    """my ucid: vb437 and Date: 24/02/23"""
     print(f"""
         [{'x' if task['done'] else ' '}] Task: {task['name']}\n 
         Description: {task['description']} \n 
