@@ -58,16 +58,19 @@ def add_task(name: str, description: str, due: str):
     #if name and description and due:
     try:
         # update lastActivity with the current datetime value
-        task['lastActivity'] = datetime.now()
+        task['lastActivity'] = datetime.now() #used imported datetime function to update lastActivity with the current datetime value  
         # set the name, description, and due date (all must be provided)
-        task['name'] = name
+        task['name'] = name 
         task['description'] = description
         task['due'] = due
+        # I have placed the entered name, description and due values in the dictionary named task individually.
         # due date must match one of the formats mentioned in str_to_datetime()
         task['due'] = str_to_datetime(due)
         # add the new task to the tasks list
-        tasks.append("task")
+        tasks.append(task)
+        # I used append function to add the entered dictionary values in the tasks list
         # output a message confirming the new task was added or if the addition was rejected due to missing data
+        # I used try and except to show that the task was added successfully or rejected.
         print("The new task has been added successfully!!!")
     #else:
     except Exception as e:
@@ -80,15 +83,19 @@ def add_task(name: str, description: str, due: str):
 def process_update(index):
     """ extracted the user input prompts to get task data then passes it to update_task() """
     # get the task by index
-    if index < len(tasks) and index >= 1:
+    if index < len(tasks) and index >= 1: #using if statement I checked that entered task is within length of tasks in the list and made sure the task doesnt go below zero 
     # show the existing value of each property where the TODOs are marked in the text of the inputs (replace the TODO related text)
         name = input(f"What's the name of this task? {tasks[index]['name']} \n").strip()
         desc = input(f"What's a brief descriptions of this task? {tasks[index]['description']} \n").strip()
         due = input(f"When is this task due (format: m/d/y H:M:S) {tasks[index]['due']} \n").strip()
-    
+    # above code takes the inputted values which is implemented through f string and added it to tasks.  
     # consider index out of bounds scenarios and include appropriate message(s) for invalid index
     else:
         print("Task does not exist. Please input correct index of the task") 
+        name = input(f"What's the name of this task? {tasks[index]['name']} \n").strip()
+        desc = input(f"What's a brief descriptions of this task? {tasks[index]['description']} \n").strip()
+        due = input(f"When is this task due (format: m/d/y H:M:S) {tasks[index]['due']} \n").strip()
+    #if the code is out of bounds it will print the above statement    
     # include your ucid and date as a comment of when you implemented this, briefly summarize the solution
     # """my ucid: vb437 and Date: 23/02/23"""
     update_task(index, name=name, description=desc, due=due)
@@ -100,21 +107,21 @@ def update_task(index: int, name: str, description:str, due: str):
     try:
         present_task = tasks[index]
     # consider index out of bounds scenarios and include appropriate message(s) for invalid index
-        if index > len(tasks) and index <= 0:    
-            local_dict = {old: locals()[old] for old in ('name', 'description', 'due')} 
-            updated = False
+        #if index > len(tasks) and index <= 0:    
+        local_dict = {old: locals()[old] for old in ('name', 'description', 'due')} 
+        updated = False
     # update incoming task data if it's provided (if it's not provided use the original task property value)         
-            for key, value in local_dict.items():
-                if value != None and value != present_task[key]:
-                    updated = True
-                    present_task[key] = value
+        for key, value in local_dict.items():
+            if value != None and value != present_task[key]:
+                updated = True
+                present_task[key] = value
     # update lastActivity with the current datetime value
-                    tasks['lastActivity'] = datetime.now()
+                tasks['lastActivity'] = datetime.now()
     # output that the task was updated if any items were changed, otherwise mention task was not updated
-    if(updated = True)
-        print("Task updated successfully!!!!.. .")
-    else:
-        print("you entered the same value again. so task has not been updated.")    
+        if(updated):
+            print("Task updated successfully!!!!.. .")
+        else:
+            print("you entered the same value again. so task has not been updated.")    
     except Exception as e:
         print("The new task was rejected due to the following issue: \n", e) 
     # make sure save() is still called last in this function
@@ -126,11 +133,24 @@ def update_task(index: int, name: str, description:str, due: str):
 def mark_done(index):
     """ Updates a single task, via index, to a done datetime"""
     # find task from list by index
+    try: 
+        task = tasks[index]
     # consider index out of bounds scenarios and include appropriate message(s) for invalid index
-    # if it's not done, record the current datetime as the value
+    except:
+        print("The index that you entered doesnot exist")
+        return
+   
     # if it is done, print a message saying it's already completed
+    if task["done"]:
+        print("You have already completed the task!!!...")
+     # if it's not done, record the current datetime as the value
+    else:
+        task["done"] = datetime.now()
+        print("This task is marked as completed.")
+    
     # make sure save() is still called last in this function
     # include your ucid and date as a comment of when you implemented this, briefly summarize the solution
+    """my ucid: vb437 and Date: 24/02/23"""
     save()
 
 def view_task(index):
