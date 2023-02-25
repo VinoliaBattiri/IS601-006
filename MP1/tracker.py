@@ -180,10 +180,17 @@ def view_task(index):
 def delete_task(index):
     """ deletes a task from the tasks list by index """
     # delete/remove task from list by index
+    try: 
+            del tasks[index]   # used del keyword to delete task from list by index
     # message should show if it was successful or not
+            print("The requested task at index {index} has been deleted successfully!!!... . \n")
     # consider index out of bounds scenarios and include appropriate message(s) for invalid index
+    except IndexError:
+        print("The index that you entered doesnot exist") #if index is out of bound prints this statement
+        return
     # make sure save() is still called last in this function
     # include your ucid and date as a comment of when you implemented this, briefly summarize the solution
+    """my ucid: vb437 and Date: 24/02/23"""
     save()
 
 def get_incomplete_tasks():
