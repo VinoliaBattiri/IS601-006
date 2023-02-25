@@ -195,19 +195,29 @@ def delete_task(index):
 
 def get_incomplete_tasks():
     """ prints a list of tasks that are not done """
-    # generate a list of tasks where the task is not done
-    # pass that list into list_tasks()
-    # include your ucid and date as a comment of when you implemented this, briefly summarize the solution
     _tasks = []
+    # generate a list of tasks where the task is not done
+    for task in tasks:
+        if task['done'] == False:
+        # pass that list into list_tasks()
+            _tasks.append(task) #
+    # include your ucid and date as a comment of when you implemented this, briefly summarize the solution
+    """my ucid: vb437 and Date: 24/02/23"""
     list_tasks(_tasks)
 
 def get_overdue_tasks():
     """ prints a list of tasks that are over due completion (not done and expired) """
     # generate a list of tasks where the due date is older than now and that are not complete
-    # pass that list into list_tasks()
+    
     # include your ucid and date as a comment of when you implemented this, briefly summarize the solution
     _tasks = []
+    now = datetime.now()
+    for task in tasks:
+        if not task['done'] and task['due'] < now:
+    
+            _tasks.append(task)
     list_tasks(_tasks)
+
 
 def get_time_remaining(index):
     """ outputs the number of days, hours, minutes, seconds a task has before it's overdue otherwise shows similar info for how far past due it is """
