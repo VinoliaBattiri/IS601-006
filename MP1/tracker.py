@@ -208,26 +208,22 @@ def get_incomplete_tasks():
 def get_overdue_tasks():
     """ prints a list of tasks that are over due completion (not done and expired) """
     # generate a list of tasks where the due date is older than now and that are not complete
-    
-    # include your ucid and date as a comment of when you implemented this, briefly summarize the solution
     _tasks = []
     now = datetime.now()
     for task in tasks:
         if not task['done'] and task['due'] < now:
-    
+    # pass that list into list_tasks()
             _tasks.append(task)
     list_tasks(_tasks)
+    # include your ucid and date as a comment of when you implemented this, briefly summarize the solution
+    """my ucid: vb437 and Date: 24/02/23"""
 
 
 def get_time_remaining(index):
     """ outputs the number of days, hours, minutes, seconds a task has before it's overdue otherwise shows similar info for how far past due it is """
     # get the task by index
-    # consider index out of bounds scenarios and include appropriate message(s) for invalid index
-    # get the days, hours, minutes, seconds between the due date and now
-    # display the remaining time via print in a clear format showing days, hours, minutes, seconds
-    # if the due date is in the past print out how many days, hours, minutes, seconds the task is over due (clearly note that it's over due, values should be positive)
-    # include your ucid and date as a comment of when you implemented this, briefly summarize the solution
-    task = {}
+    
+    #task = {}
 
 # no changes needed below this line
 
