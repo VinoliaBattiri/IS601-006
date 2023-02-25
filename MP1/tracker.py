@@ -106,9 +106,11 @@ def update_task(index: int, name: str, description:str, due: str):
     # find the task by index
     try:
         present_task = tasks[index]
+        localValues = locals();
     # consider index out of bounds scenarios and include appropriate message(s) for invalid index
         #if index > len(tasks) and index <= 0:    
-        local_dict = {old: locals()[old] for old in ('name', 'description', 'due')} 
+        local_dict = {old : localValues[old] for old in ('name', 'description', 'due')} 
+        #local_dict = {old: locals()[old] for old in ('name', 'description', 'due')} 
         updated = False
     # update incoming task data if it's provided (if it's not provided use the original task property value)         
         for key, value in local_dict.items():
@@ -122,7 +124,8 @@ def update_task(index: int, name: str, description:str, due: str):
             print("Task updated successfully!!!!.. .")
         else:
             print("you entered the same value again. so task has not been updated.")    
-    except Exception as e:
+    #except Exception as e:
+    except IndexError:
         print("The new task was rejected due to the following issue: \n", e) 
     # make sure save() is still called last in this function
     # include your ucid and date as a comment of when you implemented this, briefly summarize the solution
