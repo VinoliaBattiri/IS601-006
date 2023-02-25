@@ -137,18 +137,18 @@ def mark_done(index):
     """ Updates a single task, via index, to a done datetime"""
     # find task from list by index
     try: 
-        task = tasks[index]
+        task = tasks[index] #assigned the enetered list of task in a variable named task 
     # consider index out of bounds scenarios and include appropriate message(s) for invalid index
     except:
-        print("The index that you entered doesnot exist")
+        print("The index that you entered doesnot exist") #if index is out of bound prints this statement
         return
    
     # if it is done, print a message saying it's already completed
     if task["done"]:
-        print("You have already completed the task!!!...")
+        print("You have already completed the task!!!...") # if we get input as done prints the message
      # if it's not done, record the current datetime as the value
     else:
-        task["done"] = datetime.now()
+        task["done"] = datetime.now() # when task is marked as done captured the time using datetime function.
         print("This task is marked as completed.")
     
     # make sure save() is still called last in this function
