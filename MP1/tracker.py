@@ -74,7 +74,7 @@ def add_task(name: str, description: str, due: str):
         print("The new task was rejected due to the following issue: \n", e)      
     # make sure save() is still called last in this function
     # include your ucid and date as a comment of when you implemented this, briefly summarize the solution
-    # my ucid: vb437 and Date: 23/02/23
+    # """my ucid: vb437 and Date: 23/02/23"""
     save()
 
 def process_update(index):
@@ -90,22 +90,38 @@ def process_update(index):
     else:
         print("Task does not exist. Please input correct index of the task") 
     # include your ucid and date as a comment of when you implemented this, briefly summarize the solution
-    # my ucid: vb437 and Date: 23/02/23
+    # """my ucid: vb437 and Date: 23/02/23"""
     update_task(index, name=name, description=desc, due=due)
 
 
 def update_task(index: int, name: str, description:str, due: str):
     """ Updates the name, description , due date of a task found by index if an update to the property was provided """
     # find the task by index
-    tasktobe_updated = tasks[index]
+    try:
+        present_task = tasks[index]
     # consider index out of bounds scenarios and include appropriate message(s) for invalid index
-    # update incoming task data if it's provided (if it's not provided use the original task property value)
+        if index > len(tasks) and index <= 0:    
+            local_dict = {old: locals()[old] for old in ('name', 'description', 'due')} 
+            updated = False
+    # update incoming task data if it's provided (if it's not provided use the original task property value)         
+            for key, value in local_dict.items():
+                if value != None and value != present_task[key]:
+                    updated = True
+                    present_task[key] = value
     # update lastActivity with the current datetime value
+                    tasks['lastActivity'] = datetime.now()
     # output that the task was updated if any items were changed, otherwise mention task was not updated
+    if(updated = True)
+        print("Task updated successfully!!!!.. .")
+    else:
+        print("you entered the same value again. so task has not been updated.")    
+    except Exception as e:
+        print("The new task was rejected due to the following issue: \n", e) 
     # make sure save() is still called last in this function
     # include your ucid and date as a comment of when you implemented this, briefly summarize the solution
-    # my ucid: vb437 and Date: 24/02/23
+    # """my ucid: vb437 and Date: 24/02/23"""
     save()
+
 
 def mark_done(index):
     """ Updates a single task, via index, to a done datetime"""
@@ -115,7 +131,6 @@ def mark_done(index):
     # if it is done, print a message saying it's already completed
     # make sure save() is still called last in this function
     # include your ucid and date as a comment of when you implemented this, briefly summarize the solution
-
     save()
 
 def view_task(index):
@@ -141,7 +156,6 @@ def delete_task(index):
     # consider index out of bounds scenarios and include appropriate message(s) for invalid index
     # make sure save() is still called last in this function
     # include your ucid and date as a comment of when you implemented this, briefly summarize the solution
-    
     save()
 
 def get_incomplete_tasks():
