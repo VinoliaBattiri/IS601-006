@@ -72,7 +72,6 @@ def add_task(name: str, description: str, due: str):
         # output a message confirming the new task was added or if the addition was rejected due to missing data
         # I used try and except to show that the task was added successfully or rejected.
         print("The new task has been added successfully!!!")
-    #else:
     except Exception as e:
         print("The new task was rejected due to the following issue: \n", e)      
     # make sure save() is still called last in this function
