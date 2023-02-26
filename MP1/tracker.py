@@ -215,7 +215,6 @@ def get_overdue_tasks():
     # include your ucid and date as a comment of when you implemented this, briefly summarize the solution
     """my ucid: vb437 and Date: 24/02/23"""
 
-
 def get_time_remaining(index):
     """ outputs the number of days, hours, minutes, seconds a task has before it's overdue otherwise shows similar info for how far past due it is """
     # get the task by index
