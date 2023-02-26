@@ -86,14 +86,14 @@ def process_update(index):
     # show the existing value of each property where the TODOs are marked in the text of the inputs (replace the TODO related text)
         name = input(f"What's the name of this task? {tasks[index]['name']} \n").strip()
         desc = input(f"What's a brief descriptions of this task? {tasks[index]['description']} \n").strip()
-        due = input(f"When is this task due (format: m/d/y H:M:S) {tasks[index]['due']} \n").strip()
+        due = input(f"When is this task due (format: mm-dd-yy hh:mm:ss) {tasks[index]['due']} \n").strip()
     # above code takes the inputted values which is implemented through f string and added it to tasks.  
     # consider index out of bounds scenarios and include appropriate message(s) for invalid index
     else:
         print("Task does not exist. Please input correct index of the task") 
         name = input(f"What's the name of this task? {tasks[index]['name']} \n").strip()
         desc = input(f"What's a brief descriptions of this task? {tasks[index]['description']} \n").strip()
-        due = input(f"When is this task due (format: m/d/y H:M:S) {tasks[index]['due']} \n").strip()
+        due = input(f"When is this task due (format: mm-dd-yy hh:mm:ss) {tasks[index]['due']} \n").strip()
     #if the code is out of bounds it will print the above statement    
     # include your ucid and date as a comment of when you implemented this, briefly summarize the solution
     # """my ucid: vb437 and Date: 23/02/23"""
@@ -106,10 +106,8 @@ def update_task(index: int, name: str, description:str, due: str):
     try:
         present_task = tasks[index]
         localValues = locals();
-    # consider index out of bounds scenarios and include appropriate message(s) for invalid index
-        #if index > len(tasks) and index <= 0:    
+    # consider index out of bounds scenarios and include appropriate message(s) for invalid index  
         local_dict = {old : localValues[old] for old in ('name', 'description', 'due')} 
-        #local_dict = {old: locals()[old] for old in ('name', 'description', 'due')} 
         updated = False
     # update incoming task data if it's provided (if it's not provided use the original task property value)         
         for key, value in local_dict.items():
@@ -128,7 +126,7 @@ def update_task(index: int, name: str, description:str, due: str):
         print("The new task was rejected due to the following issue: \n", e) 
     # make sure save() is still called last in this function
     # include your ucid and date as a comment of when you implemented this, briefly summarize the solution
-    # """my ucid: vb437 and Date: 24/02/23"""
+    """my ucid: vb437 and Date: 24/02/23"""
     save()
 
 
@@ -144,10 +142,10 @@ def mark_done(index):
    
     # if it is done, print a message saying it's already completed
     if task["done"]:
-        print("You have already completed the task!!!...") # if we get input as done prints the message
+        print("You have already completed the task!!!...") # if we get input as done prints this message
      # if it's not done, record the current datetime as the value
     else:
-        task["done"] = datetime.now() # when task is marked as done captured the time using datetime function.
+        task["done"] = datetime.now() # when task is done just now, captured the time of now using datetime function.
         print("This task is marked as completed.")
     
     # make sure save() is still called last in this function
@@ -194,10 +192,10 @@ def delete_task(index):
 
 def get_incomplete_tasks():
     """ prints a list of tasks that are not done """
-    _tasks = []
+    _tasks = [] #placed a variable with empty list
     # generate a list of tasks where the task is not done
     for task in tasks:
-        if task['done'] == False:
+        if task['done'] == False: # if the value of the key value of done is false then the task will be appended in the list
         # pass that list into list_tasks()
             _tasks.append(task) #
     # include your ucid and date as a comment of when you implemented this, briefly summarize the solution
@@ -207,10 +205,10 @@ def get_incomplete_tasks():
 def get_overdue_tasks():
     """ prints a list of tasks that are over due completion (not done and expired) """
     # generate a list of tasks where the due date is older than now and that are not complete
-    _tasks = []
-    now = datetime.now()
+    _tasks = [] #placed a variable with empty list
+    now = str_to_datetime(str(datetime.now().strftime("%m/%d/%y %H:%M:%S"))) #Used the necessary functions and formats for comparing with due date and present date.
     for task in tasks:
-        if not task['done'] and task['due'] < now:
+        if not task['done'] and str_to_datetime(task["due"]) < now: #If task done is true and task due is less than present time then the list will be appended in created empty _tasks list. 
     # pass that list into list_tasks()
             _tasks.append(task)
     list_tasks(_tasks)
@@ -224,14 +222,14 @@ def get_time_remaining(index):
     try:
         task = tasks[index]
     # get the days, hours, minutes, seconds between the due date and now
-        now = str_to_datetime(str(datetime.now().strftime("%m/%d/%y %H:%M:%S")))
-        due_date = str_to_datetime(task["due"])
+        now = str_to_datetime(str(datetime.now().strftime("%m/%d/%y %H:%M:%S"))) #used the necessary functions and formats for comparing with due date and present date
+        due_date = str_to_datetime(task["due"]) #Due date taken from list with entered index and changed the format 
     # display the remaining time via print in a clear format showing days, hours, minutes, seconds
-        if due_date >= now:
+        if due_date >= now: # if due date is greater than present time then the remaining time will be displayed
             difference = due_date - now
             print("The remaining time is : ", difference)
     # if the due date is in the past print out how many days, hours, minutes, seconds the task is over due (clearly note that it's over due, values should be positive)
-        else:
+        else: # else due date is less than present time then the over due time will be displayed
             difference = now - due_date
             print("The task is over due by: ", difference)
     # consider index out of bounds scenarios and include appropriate message(s) for invalid index
