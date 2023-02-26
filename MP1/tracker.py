@@ -118,7 +118,7 @@ def update_task(index: int, name: str, description:str, due: str):
                 updated = True
                 present_task[key] = value
     # update lastActivity with the current datetime value
-                tasks['lastActivity'] = datetime.now()
+                present_task['lastActivity'] = datetime.now()
     # output that the task was updated if any items were changed, otherwise mention task was not updated
         if(updated):
             print("Task updated successfully!!!!.. .")
@@ -222,7 +222,29 @@ def get_overdue_tasks():
 def get_time_remaining(index):
     """ outputs the number of days, hours, minutes, seconds a task has before it's overdue otherwise shows similar info for how far past due it is """
     # get the task by index
-    
+    try:
+        task = tasks[index]
+    # get the days, hours, minutes, seconds between the due date and now
+        now = str_to_datetime(str(datetime.now().strftime("%m/%d/%y %H:%M:%S")))
+        due_date = str_to_datetime(task["due"])
+    # display the remaining time via print in a clear format showing days, hours, minutes, seconds
+        if due_date >= now:
+            difference = due_date - now
+            print("The remaining time is : ", difference)
+    # if the due date is in the past print out how many days, hours, minutes, seconds the task is over due (clearly note that it's over due, values should be positive)
+        else:
+            difference = now - due_date
+            print("The task is over due by: ", difference)
+    # consider index out of bounds scenarios and include appropriate message(s) for invalid index
+    except:
+    #else:
+        if task['done']:
+            print("The task is already completed on", task['done'] )
+        else:
+            print("The index that you entered doesnot exist") #if index is out of bound prints this statement
+        return
+    # include your ucid and date as a comment of when you implemented this, briefly summarize the solution
+    """my ucid: vb437 and Date: 24/02/23"""
     #task = {}
 
 # no changes needed below this line

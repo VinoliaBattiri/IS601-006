@@ -8,9 +8,23 @@
     },
     {
         "name": "cook",
-        "due": "2023-02-24 12:00:00",
+        "due": "2023-02-23 12:00:00",
         "lastActivity": "2023-02-24 21:34:39.339119",
         "description": "diet food with vegetables",
         "done": "2023-02-25 13:21:57.254820"
+    },
+    {
+        "name": "attend class",
+        "due": "2023-02-28 12:00:00",
+        "lastActivity": "2023-02-25 18:42:12.420901",
+        "description": "attend online Data structures class",
+        "done": false
+    },
+    {
+        "name": "test dhruval",
+        "due": "2023-06-18 12:00:00",
+        "lastActivity": "2023-02-25 22:25:48.976361",
+        "description": "test task chhe aa.",
+        "done": false
     }
 ]
