@@ -1,4 +1,5 @@
 # IS601-006
-# Vinolia Battiri
 
-#I am a Masters student in Computer Science
+Vinolia Battiri
+
+Hello, I'm a CS student at NJIT.
