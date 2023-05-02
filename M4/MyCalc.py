@@ -16,7 +16,7 @@ class MyCalc:
             return True
         except:
             return False
-
+        
     @staticmethod
     def _as_number(val):
         if MyCalc._is_int(val):
