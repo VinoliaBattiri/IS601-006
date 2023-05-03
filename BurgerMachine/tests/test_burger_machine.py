@@ -149,5 +149,22 @@ def test_topping_exceded(machine):
         machine.handle_toppings("cheese")
 
 """UCID : vb437 Date: 03/05/2023"""
+def test_total_burgers(machine):
+    machine.handle_bun("wheat burger bun")
+    machine.handle_patty("veggie")
+    machine.handle_patty("turkey")
+    machine.handle_patty("next")
+    machine.handle_toppings("mayo")
+    machine.handle_toppings("ketchup")
+    machine.handle_toppings("done")
+    machine.handle_pay(100,"${:.2f}".format(100))
+
+    machine.handle_bun("white burger bun")
+    machine.handle_patty("turkey")
+    machine.handle_patty("next")
+    machine.handle_toppings("lettuce")
+    machine.handle_toppings("done")
+    machine.handle_pay(100,"${:.2f}".format(100))
+    assert machine.total_burgers == 2
 
 """UCID : vb437 Date: 03/05/2023"""
