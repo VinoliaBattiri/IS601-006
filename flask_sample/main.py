@@ -9,7 +9,6 @@ CURR_DIR = os.path.dirname(os.path.abspath(__file__))
 print(CURR_DIR)
 sys.path.append(CURR_DIR)
 
-
 # app = Flask(__name__)
 def create_app(config_filename=''):
     app = Flask(__name__)
