@@ -229,6 +229,9 @@ class BurgerMachine:
         
         # handle InvalidPaymentException
             # show an appropriate message
+        except InvalidPaymentException:
+            print("Invalid payment. Please try again.")
+               
         except:
             # this is a default catch all, follow the steps above
             print("Something went wrong")
