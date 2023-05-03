@@ -129,6 +129,13 @@ def test_toppings_out_of_stock(machine):
         machine.handle_toppings("tomato")
 
 """UCID : vb437 Date: 03/05/2023"""
+def test_patty_exceded(machine):
+    with pytest.raises(ExceededRemainingChoicesException):
+        machine.handle_bun("wheat burger bun")
+        machine.handle_patty("turkey")
+        machine.handle_patty("Veggie")
+        machine.handle_patty("turkey")
+        machine.handle_patty("veggie")
 
 """UCID : vb437 Date: 03/05/2023"""
 
