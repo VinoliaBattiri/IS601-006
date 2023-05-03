@@ -112,7 +112,13 @@ def test_bun_Selection_First(machine):
         machine.handle_toppings("mayo")
 
 """UCID : vb437 Date: 03/05/2023"""
+def test_patty_out_of_stock(machine):
+    machine.patties[0].quantity = 0
+    with pytest.raises(OutOfStockException):
+        machine.handle_bun("no bun")
+        machine.handle_patty("turkey")
 
+        
 """UCID : vb437 Date: 03/05/2023"""
 
 """UCID : vb437 Date: 03/05/2023"""
