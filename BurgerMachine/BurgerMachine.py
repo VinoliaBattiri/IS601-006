@@ -204,8 +204,15 @@ class BurgerMachine:
             # prompt user to type "clean" to trigger clean_machine()
             # any other input is ignored
             # print a message whether or not the machine was cleaned
-            
             """UCID : vb437 Date: 03/05/2023"""
+        except NeedsCleaningException:
+            clean = input("The machine needs cleaning. Please type 'clean' to clean the machine.\n")
+            if clean != "clean":
+                clean = input("Please enter 'clean' to clean the machine.\n")
+            if clean == "clean":
+                self.clean_machine()
+                print("The machine has been cleaned.")    
+            
         # handle InvalidChoiceException
             # show an appropriate message of what stage/category was the invalid choice was in
             """UCID : vb437 Date: 03/05/2023"""
