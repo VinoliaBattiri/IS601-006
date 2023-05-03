@@ -105,6 +105,11 @@ def test_total_sales(machine):
     assert machine.total_sales == total1 + total2 + total3
 
 """UCID : vb437 Date: 03/05/2023"""
+def test_bun_Selection_First(machine):
+    with pytest.raises(InvalidStageException):
+        machine.handle_patty("turkey")
+        machine.handle_patty("next")
+        machine.handle_toppings("mayo")
 
 """UCID : vb437 Date: 03/05/2023"""
 
