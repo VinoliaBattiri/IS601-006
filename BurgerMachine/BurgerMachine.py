@@ -216,14 +216,17 @@ class BurgerMachine:
             """UCID : vb437 Date: 03/05/2023"""
         # handle InvalidChoiceException
             # show an appropriate message of what stage/category was the invalid choice was in
-            except InvalidChoiceException:
+        except InvalidChoiceException:
             print(f"Invalid choice for {self.currently_selecting._name_}. Please choose a valid option.")
-            
+
             """UCID : vb437 Date: 03/05/2023"""
         # handle ExceededRemainingChoicesException
             # show an appropriate message of which stage/category was exceeded
             # move to the next stage/category
+        except ExceededRemainingChoicesException:
+            print(f"Exceeded the maximum number of remaining choices for {self.currently_selecting._name_}. Move to the next stage.")    
             """UCID : vb437 Date: 03/05/2023"""
+        
         # handle InvalidPaymentException
             # show an appropriate message
         except:
