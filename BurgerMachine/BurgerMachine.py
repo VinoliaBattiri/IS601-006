@@ -153,9 +153,15 @@ class BurgerMachine:
     def print_current_burger(self):
         print(f"Current Burger: {','.join([x.name for x in self.inprogress_burger])}")
 
+        """UCID : vb437 Date: 03/05/2023"""
     def calculate_cost(self):
-        # TODO add the calculation expression/logic for the inprogress_burger
-        return 10000
+         # TODO add the calculation expression/logic for the inprogress_burger
+        if not self.inprogress_burger:
+            return 0
+        total = 0
+        for item in self.inprogress_burger:
+            total += item.cost
+        return total
 
     def run(self):
         try:
@@ -190,15 +196,23 @@ class BurgerMachine:
             sys.exit()
         # handle OutOfStockException
             # show an appropriate message of what stage/category was out of stock
+            """UCID : vb437 Date: 03/05/2023"""
+        except OutOfStockException:
+            print(f"{self.currently_selecting._name_} is out of stock. Please choose another option or move to the next stage.")
+            """UCID : vb437 Date: 03/05/2023"""
         # handle NeedsCleaningException
             # prompt user to type "clean" to trigger clean_machine()
             # any other input is ignored
             # print a message whether or not the machine was cleaned
+            
+            """UCID : vb437 Date: 03/05/2023"""
         # handle InvalidChoiceException
             # show an appropriate message of what stage/category was the invalid choice was in
+            """UCID : vb437 Date: 03/05/2023"""
         # handle ExceededRemainingChoicesException
             # show an appropriate message of which stage/category was exceeded
             # move to the next stage/category
+            """UCID : vb437 Date: 03/05/2023"""
         # handle InvalidPaymentException
             # show an appropriate message
         except:
