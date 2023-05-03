@@ -138,6 +138,15 @@ def test_patty_exceded(machine):
         machine.handle_patty("veggie")
 
 """UCID : vb437 Date: 03/05/2023"""
+def test_topping_exceded(machine):
+    with pytest.raises(ExceededRemainingChoicesException):
+        machine.handle_bun("wheat burger bun")
+        machine.handle_patty("turkey")
+        machine.handle_patty("next")
+        machine.handle_toppings("mustard")
+        machine.handle_toppings("bbq")
+        machine.handle_toppings("pickles")
+        machine.handle_toppings("cheese")
 
 """UCID : vb437 Date: 03/05/2023"""
 
