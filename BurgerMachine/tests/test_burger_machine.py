@@ -44,3 +44,36 @@ def test_production_line(second_order):
     assert False
 
 # add required test cases below
+
+"""UCID : vb437 Date: 03/05/2023"""
+def test_cost_of_burger(machine1):
+    machine1.handle_bun("Wheat Burger Bun")
+    machine1.handle_patty("turkey")
+    machine1.handle_patty("beef")
+    machine1.handle_patty("next")
+    machine1.handle_toppings("ketchup")
+    machine1.handle_toppings("mustard")
+    machine1.handle_toppings("done")
+    total1 = machine1.calculate_cost()
+    assert total1 == 3.75
+    assert "${:.2f}".format(total1) == "$3.75"
+    machine1.handle_pay(total1,"${:.2f}".format(total1))
+
+    machine1.handle_bun("white burger bun")
+    machine1.handle_patty("turkey")
+    machine1.handle_patty("next")
+    machine1.handle_toppings("done")
+    total2 = machine1.calculate_cost()
+    assert total2 == 2.5
+    assert "${:.2f}".format(total2) == "$2.50"
+    machine1.handle_pay(total2,"${:.2f}".format(total2))
+
+    machine1.handle_bun("lettuce wrap")
+    machine1.handle_patty("veggie")
+    machine1.handle_patty("next")
+    machine1.handle_toppings("tomato")
+    machine1.handle_toppings("done")
+    total3 = machine1.calculate_cost()
+    assert total3 == 2.5
+    assert "${:.2f}".format(total3) == "$2.50"
+    machine1.handle_pay(total3,"${:.2f}".format(total3))
