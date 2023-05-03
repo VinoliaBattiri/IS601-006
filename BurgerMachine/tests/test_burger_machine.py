@@ -77,3 +77,43 @@ def test_cost_of_burger(machine1):
     assert total3 == 2.5
     assert "${:.2f}".format(total3) == "$2.50"
     machine1.handle_pay(total3,"${:.2f}".format(total3))
+
+"""UCID : vb437 Date: 03/05/2023"""
+def test_total_sales(machine):
+    machine.handle_bun("White Burger Bun")
+    machine.handle_patty("turkey")
+    machine.handle_patty("veggie")
+    machine.handle_patty("next")
+    machine.handle_toppings("pickles")
+    machine.handle_toppings("mayo")
+    machine.handle_toppings("done")
+    total1 = machine.calculate_cost()
+    machine.handle_pay(total1,"${:.2f}".format(total1))
+    machine.handle_bun("wheat burger bun")
+    machine.handle_patty("turkey")
+    machine.handle_patty("next")
+    machine.handle_toppings("done")
+    total2 = machine.calculate_cost()
+    machine.handle_pay(total2,"${:.2f}".format(total2))
+    machine.handle_bun("white Burger Bun")
+    machine.handle_patty("turkey")
+    machine.handle_patty("next")
+    machine.handle_toppings("cheese")
+    machine.handle_toppings("done")
+    total3 = machine.calculate_cost()
+    machine.handle_pay(total3,"${:.2f}".format(total3))
+    assert machine.total_sales == total1 + total2 + total3
+
+"""UCID : vb437 Date: 03/05/2023"""
+
+"""UCID : vb437 Date: 03/05/2023"""
+
+"""UCID : vb437 Date: 03/05/2023"""
+
+"""UCID : vb437 Date: 03/05/2023"""
+
+"""UCID : vb437 Date: 03/05/2023"""
+
+"""UCID : vb437 Date: 03/05/2023"""
+
+"""UCID : vb437 Date: 03/05/2023"""
