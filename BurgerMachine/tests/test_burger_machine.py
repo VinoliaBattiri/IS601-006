@@ -118,8 +118,15 @@ def test_patty_out_of_stock(machine):
         machine.handle_bun("no bun")
         machine.handle_patty("turkey")
 
-        
+
 """UCID : vb437 Date: 03/05/2023"""
+def test_toppings_out_of_stock(machine):
+    machine.toppings[0].quantity = 0
+    with pytest.raises(OutOfStockException):
+        machine.handle_bun("no bun")
+        machine.handle_patty("veggie")
+        machine.handle_patty("next")
+        machine.handle_toppings("tomato")
 
 """UCID : vb437 Date: 03/05/2023"""
 
