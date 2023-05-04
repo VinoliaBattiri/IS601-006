@@ -3,3 +3,4 @@ fLASK SQL - Flask-Sample-SQL
 SIMPLE CALCULATOR -V4
 bURGER MACHINE - MiniProject-2
 Flask-Templates - Flask-Templates
+Flask-Sample-CRUD - Flask-Sample-CRUD
