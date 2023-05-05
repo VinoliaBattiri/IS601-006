@@ -1,3 +1,2 @@
-# IS601 - 007
-## Matt Toegel
-## Python is differentx
+# IS601 - 006
+## Vinolia Bttiri
