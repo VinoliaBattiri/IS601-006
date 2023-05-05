@@ -41,3 +41,4 @@ def test_edit_page(client):
     print(ele)
     # for easier debugging run pytest with the -rP flags
     assert ele.get("value") == "tcval"
+
