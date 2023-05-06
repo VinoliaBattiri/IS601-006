@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - prod # rename this to your prod branch if the naming differs
-      - Milestone1
+      - Milestone2
 jobs:
 
     deploy:
