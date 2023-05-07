@@ -6,7 +6,8 @@ name: Deploy to heroku prod.
 on:
   push:
     branches:
-      - prod
+      - mp3-prod
+      - MiniProject-3
 
 # Your workflows jobs.
 jobs:
@@ -67,6 +68,5 @@ jobs:
           # For more information look at https://devcenter.heroku.com/articles/process-model
           process_type: web
           
-   
           
 ### ⬆ IMPORTANT PART ⬆ ###
